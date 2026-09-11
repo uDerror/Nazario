@@ -18,7 +18,9 @@ from telegram.ext import (
     CommandHandler, ContextTypes, MessageHandler, PrefixHandler, filters,
 )
 TOKENS: List[str] = [
-
+    token.strip()
+    for token in os.getenv("BOT_TOKENS", "").replace(",", "\n").splitlines()
+    if token.strip()
 ]
 OWNER_ID = "8580917913"  # Primary Owner ID (display format)
 OWNER_INFO = {
